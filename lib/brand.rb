@@ -6,7 +6,7 @@ class Brand
     @id = attributes.fetch(:id)
   end
 
-  #retrieves all the data in the database.
+  # retrieves all the data in the database.
   define_singleton_method(:all) do
     returned_brands = DB.exec('SELECT * FROM brands;')
     brands = []
@@ -18,10 +18,16 @@ class Brand
     brands
   end
 
-  #retrieves shoes using their unique id.
-  define_singleton_method(".find") do |id|
+  # retrieves shoes using their unique id.
+  define_singleton_method(:find) do |id|
     result = DB.exec("SELECT * FROM brands WHERE id -#{id};")
-    name = result.first().fetch("name")
-    Brand.new({:name => name, :id => id})
-end
+    name = result.first.fetch('name')
+    Brand.new(name: name, id: id)
+  end
+
+  #save the shoes and gives them unique id.
+  define_method(:save) do
+    result = DB.exec("INSERT INTO brands (name) VALUES ('#{@name}') RETURNING id;")
+    @id = result.first().fetch("id").to_i()
+  end
 end
