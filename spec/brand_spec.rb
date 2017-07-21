@@ -28,6 +28,16 @@ describe(Brand) do
     end
   end
 
+  #update method.
+  describe("#update") do
+    it("lets you update brands in the database") do
+      brand = Brand.new({:name => "Timber", :id => nil})
+      brand.save()
+      brand.update({:name => "Boots"})
+      expect(brand.name()).to(eq("boots"))
+    end
+  end
+
   #delete test to clear the shoe brands.
   describe("#delete") do
     it("lets you delete a brand from the database") do
