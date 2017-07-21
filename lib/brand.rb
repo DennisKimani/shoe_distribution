@@ -20,7 +20,7 @@ class Brand
 
   # retrieves shoes using their unique id.
   define_singleton_method(:find) do |id|
-    result = DB.exec("SELECT * FROM brands WHERE id -#{id};")
+    result = DB.exec("SELECT * FROM brands WHERE id = #{id};")
     name = result.first.fetch('name')
     Brand.new(name: name, id: id)
   end
@@ -30,4 +30,10 @@ class Brand
     result = DB.exec("INSERT INTO brands (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
+
+  #method for comparing to shoes if the same.
+  define_method(:==) do |another_brand|
+    self.name().==(another_brand.name()).&(self.id().==(another_brand.id()))
+  end
+  
 end
