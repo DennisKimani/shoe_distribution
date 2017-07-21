@@ -43,5 +43,8 @@ class Brand
     DB.exec("UPDATE brands SET name ='#{@name}' WHERE id = #{@id};")
   end
 
-  
+  #delete method.
+  define_method(:delete) do
+    DB.exec("DELETE FROM brands WHERE id = #{self.id()};")
+  end
 end
