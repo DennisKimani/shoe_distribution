@@ -35,5 +35,13 @@ class Brand
   define_method(:==) do |another_brand|
     self.name().==(another_brand.name()).&(self.id().==(another_brand.id()))
   end
+
+  #update method.
+  define_method(:update) do|attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = attributes.fetch(:name, @name)
+    DB.exec("UPDATE brands SET name ='#{@name}' WHERE id = #{@id};")
+  end
+
   
 end
