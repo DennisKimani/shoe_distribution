@@ -6,14 +6,22 @@ class Brand
     @id = attributes.fetch(:id)
   end
 
+  #retrieves all the data in the database.
   define_singleton_method(:all) do
-    returned_brands = DB.exec("SELECT * FROM brands;")
+    returned_brands = DB.exec('SELECT * FROM brands;')
     brands = []
-    returned_brands.each() do |brand|
-      name = brand.fetch("name")
-      id = brand.fetch("id").to_i()
-      brands.push(Brand.new({:name => name, :id => id}))
+    returned_brands.each do |brand|
+      name = brand.fetch('name')
+      id = brand.fetch('id').to_i
+      brands.push(Brand.new(name: name, id: id))
+    end
+    brands
   end
-  brands
+
+  #retrieves shoes using their unique id.
+  define_singleton_method(".find") do |id|
+    result = DB.exec("SELECT * FROM brands WHERE id -#{id};")
+    name = result.first().fetch("name")
+    Brand.new({:name => name, :id => id})
 end
 end
