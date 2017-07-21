@@ -24,7 +24,19 @@ describe(Brand) do
     it("is the same brand if it has the same name and id") do
       brand = Brand.new({:name => "Rubber", :id => nil})
       brand2 = Brand.new({:name => "Bata", :id => nil})
-      expect(brand).to(eq(movie2))
+      expect(brand).to(eq(brand2))
+    end
+  end
+
+  #delete test to clear the shoe brands.
+  describe("#delete") do
+    it("lets you delete a brand from the database") do
+      brand = Brand.new({:name => "Boots", :id => nil})
+      brand.save()
+      brand2 = Brand.new({:name => "high hills", :id => nil})
+      brand2.save()
+      brand.delete()
+      expect(Brand.all()).to(eq([brand2]))
     end
   end
 end
