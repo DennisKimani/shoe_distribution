@@ -1,0 +1,35 @@
+<h1><%= @brand.name() %></h1>
+
+  <h3>Select all stores starring this brand:</h3>
+
+  <% if @stores.any?() %>
+    <form action="/brands/<%= @brand.id %>" method="post">
+      <input type="hidden" name="_method" value="patch">
+
+      <% @stores.each() do |store| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="store_ids[]" value="<%= store.id() %>" ><%= store.name() %>
+          </label>
+        </div>
+      <% end %>
+
+      <button type="submit">Add stores</button>
+    </form>
+  <% end %>
+
+
+  <% if @brand.stores().any?() %>
+    <h3>Here are all the stores starring this brand:</h3>
+
+    <ul>
+      <% @brand.stores().each() do |store| %>
+        <li><%= store.name() %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no stores yet!</p>
+  <% end %>
+
+
+  <a href="/">Return to Main Page</a>

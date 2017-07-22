@@ -1,0 +1,27 @@
+<h1>Welcome to the brand page</h1>
+
+  <p>Add an brand to the database:</p>
+
+  <form action="/brands" method="post">
+    <label for="name">Brand's name:</label>
+    <input id="name" name="name" type="text">
+
+    <button type="submit">Add brand</button>
+  </form>
+
+
+  <% if @brands.any?() %>
+    <p>Click on an brand to see information about them and to assign them to different stores:</p>
+
+    <ul>
+      <% @brands.each do |brand| %>
+        <li><a href="/brands/<%= brand.id() %>"><%= brand.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no brands added yet!</p>
+  <% end %>
+
+  <p><a href="/stores">See all stores</a></p>
+
+  <p><a href="/">Return to Main Page</a></p>

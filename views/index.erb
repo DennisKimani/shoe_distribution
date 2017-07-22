@@ -1,0 +1,35 @@
+<h1>Welcome to the Store Database!</h1>
+  <h2>A place where you can store information about stores and brands.</h2>
+
+  <p><a href="/stores">Add a new store</a></p>
+  <p><a href="/brands">Add a new brand</a></p>
+
+
+  <h3>Here are all the brands in this database:</h3>
+
+  <% if @brands.any?() %>
+    <p>Click on an brand to see information about them and mark which stores they were in:</p>
+
+    <ul>
+      <% @brands.each do |brand| %>
+        <li><a href="/brands/<%= brand.id() %>"><%= brand.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no brands added yet!</p>
+  <% end %>
+
+
+  <h3>Here are all the stores in this database:</h3>
+
+  <% if @stores.any?() %>
+    <p>Click on a store to see information about it and mark which brands were in it:</p>
+
+    <ul>
+      <% @stores.each do |store| %>
+        <li><a href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>There are no stores added yet!</p>
+  <% end %>
