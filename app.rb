@@ -6,8 +6,6 @@ require("sinatra")
   require("./lib/store")
   require("pg")
 
-  DB = PG.connect({:dbname => "shoe_database"})
-
   get("/") do
     @brands = Brand.all()
     @stores = Store.all()
@@ -26,7 +24,8 @@ require("sinatra")
 
   post("/brands") do
     name = params.fetch("name")
-    brand = Brand.new({:name => name, :id => nil})
+    description = params.fetch("description")
+    brand = Brand.new({:name => name, :description => description, :id => nil})
     brand.save()
     @brands = Brand.all()
     erb(:brands)

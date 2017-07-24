@@ -1,13 +1,23 @@
-ENV['RAKE_ENV'] = 'test'
-require("rspec")
-  require("pg")
-  require('sinatra/activerecord')
-  require("store")
-  require('brand')
+ENV['RACK_ENV'] = 'test'
+
+  require("bundler/setup")
+  Bundler.require(:default, :test)
+  set(:root, Dir.pwd())
+
+  require('capybara/rspec')
+  Capybara.app = Sinatra::Application
+  set(:show_exceptions, false)
+  require('./app')
+
+  Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
 
   RSpec.configure do |config|
     config.after(:each) do
-      DB.exec("DELETE FROM stores *;")
-      DB.exec("DELETE FROM brands *;")
+      Stores.all().each() do |store|
+        store.destroy()
+      end
+      Brands.all().each()do |brand|
+        brand.destroy()
+      end
     end
   end

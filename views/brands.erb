@@ -1,10 +1,12 @@
 <h1>Welcome to the brand page</h1>
 
-  <p>Add an brand to the database:</p>
+  <p>Add a brand to the database:</p>
 
   <form action="/brands" method="post">
     <label for="name">Brand's name:</label>
     <input id="name" name="name" type="text">
+    <label for="description">Description:</label>
+    <input id="description" name="description" type="description">
 
     <button type="submit">Add brand</button>
   </form>
@@ -15,7 +17,7 @@
 
     <ul>
       <% @brands.each do |brand| %>
-        <li><a href="/brands/<%= brand.id() %>"><%= brand.name() %></a></li>
+        <li><a href="/brands/<%= brand.id() %>"><strong><%= brand.name() %>:-</strong></a><%= brand.description()%></li>
       <% end %>
     </ul>
   <% else %>
