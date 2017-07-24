@@ -4,5 +4,6 @@ class Stores < ActiveRecord::Migration[5.1]
       t.column(:name, :string)
 
       t.timestamps()
+    end
   end
 end
