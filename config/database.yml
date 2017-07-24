@@ -2,6 +2,6 @@ development:
   adapter: postgresql
   database: shoe_development
 
-  test:
-    adapter: postgresql
-    database: shoe_test
+test:
+  adapter: postgresql
+  database: shoe_test
