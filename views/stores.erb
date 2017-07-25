@@ -3,8 +3,10 @@
   <p>Add a store to the database:</p>
 
   <form action="/stores" method="post">
-    <label for="name">Store's name:</label>
-    <input id="name" name="name" type="text">
+    <div class="input-field">
+      <label for="name">Store's name:</label>
+      <input id="name" name="name" type="text" required>
+    </div>
 
     <button type="submit">Add store</button>
   </form>

@@ -1,11 +1,17 @@
 <h1>Welcome to the Store Database!</h1>
-  <h2>A place where you can store information about stores and brands.</h2>
-
+<hr>
+  <h5><em>A place where you can store information about stores and brands.</em></h5>
+<div class="row">
+<div class="col col-s6">
   <p><button class="button button1"><a href="/stores">Add a new store</a></button></p>
+</div>
+<div class="col col-s6">
   <p><button class="button button1"><a href="/brands">Add a new brand</a></button></p>
+</div>
+</div>
 
 
-  <h3>Here are all the brands in this database:</h3>
+  <h4>Here are all the brands in this database:</h4>
 
   <% if @brands.any?() %>
     <p>Click on an brand to see information about them and mark which stores they were in:</p>
@@ -20,7 +26,7 @@
   <% end %>
 
 
-  <h3>Here are all the stores in this database:</h3>
+  <h4>Here are all the stores in this database:</h4>
 
   <% if @stores.any?() %>
     <p>Click on a store to see information about it and mark which brands were in it:</p>
