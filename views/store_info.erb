@@ -25,11 +25,11 @@
 
     <ul>
       <% @store.brands().each() do |brand| %>
-        <li><%= brand.name() %></li>
+        <li><%= brand.name():-%><%= brand.description()</li>
       <% end %>
     </ul>
   <% else %>
-    <p>There are no brands yet! <a href="/brands">Add brands here</a></p>
+    <p>There are no brands yet!<button class="button button1"><a href="/brands">Add brands here</a></button></p>
   <% end %>
 
 
