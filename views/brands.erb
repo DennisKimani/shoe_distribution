@@ -3,12 +3,16 @@
   <p>Add a brand to the database:</p>
 
   <form action="/brands" method="post">
-    <label for="name">Brand's name:</label>
-    <input id="name" name="name" type="text">
-    <label for="description">Description:</label>
-    <input id="description" name="description" type="description">
+    <div class="input-field">
+      <label for="name">Brand's name:</label>
+      <input id="name" name="name" type="text" required>
+    </div>
+    <div class="input-field">
+      <label for="description">Description:</label>
+      <input id="description" name="description" type="text" required>
+    </div>
 
-    <button type="submit">Add brand</button>
+    <button type="submit" class="button button2">Add brand</button>
   </form>
 
 
