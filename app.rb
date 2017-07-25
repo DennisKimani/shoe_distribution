@@ -78,11 +78,11 @@ require("sinatra")
     end
   end
 
-  # delete("/brands/:id") do
-  #   @brand = Brand.find(params.fetch("id").to_i())
-  #   if @brand.destroy()
-  #     erb(:success)
-  #   else
-  #     erb(:errors)
-  #   end
-  # end
+  delete("/brands/:id") do
+    @brand = Brand.find(params.fetch("id").to_i())
+    if @brand.destroy()
+      erb(:/brands)
+    else
+      erb(:error)
+    end
+  end
