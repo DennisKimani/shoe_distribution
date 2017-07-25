@@ -22,7 +22,7 @@ body {
 }
 
 .button1{
-  background-color: blue;
+  background-color: red;
   color: black;
   border: none;
   border-radius: 12px;
@@ -38,7 +38,7 @@ body {
 
 
 .button2{
-  background-color: blue;
+  background-color: lightblue;
   border: none;
   border-radius: 12px;
   color: black;
@@ -47,20 +47,6 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 18px;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-
-.button3{
-  background-color: red;
-  border: none;
-  border-radius: 8px;
-  color: black;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
   margin: 4px 2px;
   cursor: pointer;
 }
