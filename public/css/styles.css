@@ -1,3 +1,12 @@
+body {
+  background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://static.pexels.com/photos/267320/pexels-photo-267320.jpeg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white;
+}
+
 .button{
   background-color: green;
   border: none;
@@ -13,7 +22,8 @@
 }
 
 .button1{
-  background-color: green;
+  background-color: blue;
+  color: black;
   border: none;
   border-radius: 12px;
   color: black;
