@@ -14,6 +14,7 @@ require("sinatra")
 
   get("/brands") do
     @brands = Brand.all()
+    @stores = Store.all()
     erb(:brands)
   end
 
@@ -28,6 +29,7 @@ require("sinatra")
     brand = Brand.new({:name => name, :description => description, :id => nil})
     brand.save()
     @brands = Brand.all()
+    @stores = Store.all()
     erb(:brands)
   end
 
@@ -40,8 +42,8 @@ require("sinatra")
   end
 
   get("/brands/:id") do
-    @brand = Brand.find(params.fetch("id").to_i())
     @stores = Store.all()
+    @brand = Brand.find(params.fetch("id").to_i())
     erb(:brand_info)
   end
 
@@ -74,14 +76,14 @@ require("sinatra")
     if @store.destroy()
       redirect("/stores")
     else
-      erb(:errors)
+      erb(:error)
     end
   end
 
   delete("/brands/:id") do
     @brand = Brand.find(params.fetch("id").to_i())
     if @brand.destroy()
-      erb(:/brands)
+      redirect("/brands")
     else
       erb(:error)
     end
