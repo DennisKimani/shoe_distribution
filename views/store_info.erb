@@ -1,6 +1,6 @@
 <h1><%= @store.name() %></h1>
 
-  <h3>Select all brands who starred in this store:</h3>
+  <h3>Select all brands sold in this store:</h3>
 
   <% if @brands.any?() %>
     <form action="/stores/<%= @store.id %>" method="post">
@@ -8,7 +8,9 @@
       <% @brands.each() do |brand| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" ><%= brand.name() %>
+            <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" >
+            <%= brand.name() %></br>
+            <%=brand.description() %>
           </label>
         </div>
       <% end %>
