@@ -3,6 +3,16 @@
   <p>Add a brand to the database:</p>
 
   <form action="/brands" method="post">
+    <select id="store_id" name="stylist_id" type="name" class="browser-default">
+    <% @stores.each() do |store| %>
+      <div class="checkbox">
+          <option value="<%= store.id() %>"  >
+            <%= store.name() %>
+          </option>
+      </div>
+    <% end %>
+  </select>
+
     <div class="input-field">
       <label for="name">Brand's name:</label>
       <input id="name" name="name" type="text" required>
@@ -22,12 +32,16 @@
     <ul>
       <% @brands.each do |brand| %>
         <li><a href="/brands/<%= brand.id() %>"><strong><%= brand.name() %>:-</strong></a><%= brand.description()%></li>
+        <form action="/brands/<%= brand.id() %>" method="post">
+          <input name="_method" type="hidden" value="delete">
+          <button class="btn button3"type="submit">Delete Brand</button>
+        </form>
       <% end %>
     </ul>
   <% else %>
     <p>There are no brands added yet!</p>
   <% end %>
 
-  <p><a href="/stores">See all stores</a></p>
+  <p><button class="button button1"><a href="/stores">See all stores</a></button></p>
 
-  <p><a href="/">Return to Main Page</a></p>
+  <p><button class="button button1"><a href="/">Return to Main Page</a></button></p>
