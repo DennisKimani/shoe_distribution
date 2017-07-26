@@ -7,29 +7,15 @@
       <input type="hidden" name="_method" value="patch">
       <% @brands.each() do |brand| %>
         <div class="checkbox">
-          <label>
-            <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" >
-            <%= brand.name() %></br>
-            <%=brand.description() %>
+            <input type="checkbox" name="brand_ids[]" value="<%= brand.id() %>" id="<%= brand.id() %>">
+            <label for="<%= brand.id() %>">
+            <%= brand.name() %> <p>Manufactured On:</p><%= brand.created_at() %>
           </label>
         </div>
       <% end %>
 
       <button type="submit" class="button button2">Add brands</button>
     </form>
-  <% end %>
-
-  <% if @store.brands().any?() %>
-
-    <h3>Here are all the brands in this store:</h3>
-
-    <ul>
-      <% @store.brands().each() do |brand| %>
-        <li><%= brand.name():-%><%= brand.description()</li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>There are no brands yet!<button class="button button1"><a href="/brands">Add brands here</a></button></p>
   <% end %>
 
 
