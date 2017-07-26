@@ -20,7 +20,7 @@
       <li><a href="/stores/<%= store.id() %>"><%= store.name() %></a></li>
       <form action="/stores/<%= store.id() %>" method="post">
         <input name="_method" type="hidden" value="delete">
-        <button type="submit">Delete Store</button>
+        <button class="button button3" type="submit">Delete Store</button>
       </form>
       <% end %>
     </ul>
