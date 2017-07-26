@@ -67,7 +67,7 @@ require("sinatra")
     @store = Store.find(store_id)
     brand_ids = params.fetch("brand_ids")
     @store.update({:brand_ids => brand_ids})
-    @brands = brand.all()
+    @brands = Brand.all()
     erb(:store_info)
   end
 
