@@ -1,35 +1,21 @@
 <h1><%= @brand.name() %></h1>
 
-  <h3>Select all stores starring this brand:</h3>
+<h3>Select all stores selling this brand:</h3>
 
-  <% if @stores.any?() %>
-    <form action="/brands/<%= @brand.id %>" method="post">
-      <input type="hidden" name="_method" value="patch">
+<% if @stores.any?() %>
+<form action="/brands/<%= @brand.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
 
-      <% @stores.each() do |store| %>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" name="store_ids[]" value="<%= store.id() %>" ><%= store.name() %>
-          </label>
-        </div>
-      <% end %>
-
-      <button type="submit">Add stores</button>
-    </form>
+  <% @stores.each() do |store| %>
+  <div class="checkbox">
+    <input type="checkbox" name="store_ids[]" value="<%= store.id() %>" id="<%= store.id() %>">
+    <label for="<%= store.id() %>">
+      <%= store.name() %> <p>Build on:</p><%store.created_at() %>
+    </label>
+  </div>
   <% end %>
 
-
-  <% if @brand.stores().any?() %>
-    <h3>Here are all the stores starring this brand:</h3>
-
-    <ul>
-      <% @brand.stores().each() do |store| %>
-        <li><%= store.name() %></li>
-      <% end %>
-    </ul>
-  <% else %>
-    <p>There are no stores yet!</p>
-  <% end %>
-
-
-  <a href="/">Return to Main Page</a>
+  <button class="button button2" type="submit">Add stores</button>
+</form>
+<% end %>
+<a href="/">Return to Main Page</a>
