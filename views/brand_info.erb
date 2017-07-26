@@ -10,7 +10,7 @@
   <div class="checkbox">
     <input type="checkbox" name="store_ids[]" value="<%= store.id() %>" id="<%= store.id() %>">
     <label for="<%= store.id() %>">
-      <%= store.name() %> <p>Build on:</p><%store.created_at() %>
+      <%= store.name() %> <p>Build on:</p><%= store.created_at() %>
     </label>
   </div>
   <% end %>
