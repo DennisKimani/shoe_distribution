@@ -44,13 +44,13 @@ require("sinatra")
   get("/brands/:id") do
     @stores = Store.all()
     @brand = Brand.find(params.fetch("id").to_i())
-    erb(:brand_details)
+    erb(:brand_info)
   end
 
   get("/stores/:id") do
     @store = Store.find(params.fetch("id").to_i())
     @brands = Brand.all()
-    erb(:store_details)
+    erb(:store_info)
   end
 
   patch("/brands/:id") do
