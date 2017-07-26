@@ -1,0 +1,14 @@
+<h1><%= @store.name() %></h1>
+
+  <% if @store.brands().any?() %>
+
+    <h3>Brands in <%= @store.name() %>:</h3>
+    <ul>
+      <% @store.brands().each() do |brand| %>
+        <li><%= brand.name() %><p>Stocked On:</p><%= brand.created_at() %></li>
+        <p><a href="/brands/<%= brand.id() %>/edit"><button class="button btn"> Edit <%= brand.name() %> brand</button></a></p>
+      <% end %>
+    </ul>
+  <% else %>
+    <p> <%= @store.name() %> has no Brands yet!</p>
+  <% end %>
